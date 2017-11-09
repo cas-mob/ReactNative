@@ -1,31 +1,19 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
-import React, { Component } from 'react';
-import {
-  StyleSheet,
-  View
-} from 'react-native';
+import React from 'react'
 import ApiView from './components/Api'
+import { TabNavigator } from 'react-navigation'
+import { Text, View } from 'react-native'
 
-export default class App extends Component<{}> {
-  render() {
-    return (
-      <View style={styles.container}>
-        <ApiView />
-      </View>
-    );
-  }
-}
+const RootTabs = TabNavigator({
+	Home: {
+		screen: () => <View style={{flex: 1, justifyContent: 'center'}}>
+			<Text style={{textAlign: 'center'}}>
+				Welcome to myApp!
+			</Text>
+		</View>
+	},
+	'Api & Share': {
+		screen: ApiView
+	}
+})
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  }
-});
+export default RootTabs
