@@ -1,15 +1,11 @@
 import React from 'react'
 import ApiView from './components/Api'
 import { TabNavigator } from 'react-navigation'
-import { Text, View } from 'react-native'
+import CameraView from './components/Camera'
 
 const RootTabs = TabNavigator({
-	Home: {
-		screen: () => <View style={{flex: 1, justifyContent: 'center'}}>
-			<Text style={{textAlign: 'center'}}>
-				Welcome to myApp!
-			</Text>
-		</View>
+	Camera: {
+		screen: CameraView
 	},
 	'Api & Share': {
 		screen: ApiView
