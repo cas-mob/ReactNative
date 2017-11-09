@@ -14,7 +14,7 @@ export default class CameraView extends Component {
 		this.state = {
 			rotation: 0,
 			photo:
-				'https://pbs.twimg.com/profile_images/839721704163155970/LI_TRk1z_400x400.jpg'
+				'https://upload.wikimedia.org/wikipedia/en/b/b1/Portrait_placeholder.png'
 		}
 	}
 
