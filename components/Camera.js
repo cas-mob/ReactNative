@@ -1,37 +1,12 @@
 import React, { Component } from 'react'
 import Camera from 'react-native-camera'
-import {
-	StyleSheet,
-	Text,
-	View,
-	Button,
-	Image
-} from 'react-native'
+import { StyleSheet, Text, View, Button, Image } from 'react-native'
 
 export default class CameraView extends Component {
 	constructor() {
 		super()
-		this.state = {
-			rotation: 0,
-			photo:
-				'https://upload.wikimedia.org/wikipedia/en/b/b1/Portrait_placeholder.png'
-		}
+		/* todo: state initialisieren */
 	}
-
-	takePicture() {
-		this.camera
-			.capture()
-			.then(data =>
-				this.setState(prev => {
-					console.log(data)
-					return { ...prev, photo: data.path }
-				})
-			)
-			.catch(err => console.error(err))
-	}
-
-	rotateImage = () =>
-		this.setState(prev => ({ ...prev, rotation: (prev.rotation + 90) % 360 }))
 
 	render() {
 		return (
@@ -43,7 +18,7 @@ export default class CameraView extends Component {
 					style={styles.preview}
 					aspect={Camera.constants.Aspect.fit}
 				>
-					<Button title="Capture" onPress={this.takePicture.bind(this)} />
+					<Button title="Capture" onPress={/* todo: Foto schiessen. Tipp: Context beachten! */}/>
 				</Camera>
 				<View style={styles.photo}>
 					{this.state.photo ? (
@@ -54,7 +29,9 @@ export default class CameraView extends Component {
 									styles.image,
 									{ transform: [{ rotate: `${this.state.rotation}deg` }] }
 								]}
-								source={{ uri: this.state.photo }}
+								source={{
+									uri: null /* todo: Pfad zu Foto eintragen (und null entfernen) */
+								}}
 							/>
 							<Button title="Rotate" onPress={this.rotateImage} />
 						</View>
@@ -62,6 +39,20 @@ export default class CameraView extends Component {
 				</View>
 			</View>
 		)
+	}
+
+	takePicture() {
+		this.camera
+			.capture()
+			.then(data => {
+				/* todo: Pfad zu Foto "merken" */
+			})
+			.catch(err => console.error(err))
+	}
+
+	rotateImage = () => {
+		/* todo: Für die Profis: Foto um 90 Grad rotieren */
+		/* siehe "transform" Attribut in <Image/> oberhalb */
 	}
 }
 
