@@ -9,46 +9,18 @@ export default class MapsView extends Component {
 	}
 
 	componentDidMount() {
-		navigator.geolocation.watchPosition(
-			pos =>
-				this.setState(prev => ({
-					...prev,
-					longitude: pos.coords.longitude,
-					latitude: pos.coords.latitude
-				})),
-			error => Alert.alert('Error', error.message)
-		)
+		navigator.geolocation.watchPosition(/* todo: longitude & latitude speichern; Bei Fehler Alert-Message anzeigen */)
 	}
 
 	get position() {
-		return `${this.state.longitude} ${this.state.latitude}`
+		return `${null /* todo: Positionsdaten zurück geben */}`
 	}
 
 	render() {
 		return (
 			<View style={styles.container}>
 				<Text style={styles.position}>Current position is {this.position}</Text>
-				<MapView
-					style={styles.map}
-					zoomEnabled={true}
-					showsUserLocation={false}
-					provider={PROVIDER_GOOGLE}
-					region={{
-						latitude: this.state.latitude,
-						longitude: this.state.longitude,
-						latitudeDelta: 0.1,
-						longitudeDelta: 0.1
-					}}
-				>
-					<MapView.Marker
-						coordinate={{
-							latitude: this.state.latitude,
-							longitude: this.state.longitude
-						}}
-						title={'Me'}
-						description={'My current position'}
-					/>
-				</MapView>
+				{/* todo: Map und Marker rendern */}
 			</View>
 		)
 	}
